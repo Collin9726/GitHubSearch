@@ -3,10 +3,10 @@
         <div class="jumbotron">
             <div class="row border-b">
                 <div class="col-12 col-md-4">
-                    <form>
+                    <form (ngSubmit)='submitUsername()' #usernameForm='ngForm'>
                         <div class="row">
                             <div class="col-11 form-group">
-                                <input class="form-control" type="text" name="searchUser" id="searchUser" placeholder="Search user" required>
+                                <input class="form-control" type="text" name="searchUser" id="searchUser" [(ngModel)]="searchedUser.username" #searchUser='ngModel' placeholder="Search user" required>
                             </div>
                             <div class="col-1">
                                 <button class="btn btn-info" type="submit">Search</button>
@@ -15,35 +15,45 @@
                     </form>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-md-6 border-r">
-                    <h4>User</h4>
-                    <hr>
-                    <ul>
-                        <li class="username">Collin9726</li>
-                    </ul>
-                    <p>Picture</p>                                        
+            <div *ngFor='let user of users'>
+                <div class="row">
+                    <div class="col-12 col-md-6 border-r">
+                        <h4>User</h4>
+                        <hr>
+                        <ul>
+                            <a href="{{user.profileLink}}"><li class="username">{{user.username}}</li></a>
+                        </ul>
+                        <div>
+                            <img src="{{user.profPic}}" alt="avatar">
+                        </div>                                        
+                    </div>
+                    <div class="col-12 col-md-6 border-r">
+                        <h4>Profile</h4>
+                        <hr>
+                        <h6>Name</h6>
+                        <p class="orange">{{user.name}}</p>
+                        <h6>Followers</h6>
+                        <p class="orange">{{user.followers}}</p>
+                        <h6>Following</h6>
+                        <p class="orange">{{user.following}}</p>
+                        <h6>Joined GitHub</h6>
+                        <p class="orange">{{user.joined}}</p>
+                        <h6>Public Repos</h6>
+                        <p class="orange">{{user.publicRepos}}</p>
+                    </div>                
                 </div>
-                <div class="col-12 col-md-6 border-r">
-                    <h4>Profile</h4>
-                    <hr>
-                    <h6>Followers</h6>
-                    <p class="orange">10</p>
-                    <h6>Following</h6>
-                    <p class="orange">20</p>
-                </div>                
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <h4>Repositories</h4>
-                    <hr>
-                </div>
-                <div class="col-12 col-md-4">
-                    <ul>
-                        <li>One</li>
-                        <li>One</li>
-                        <li>One</li>
-                    </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Repositories</h4>
+                        <hr>
+                    </div>
+                    <div *ngFor='let item of user.repositoryNames;let i = index' class="col-12 col-md-4">
+                        <ul>
+                            <a href="{{user.repositoryLinks[i]}}"><li>{{item}}</li></a>                            
+                        </ul>
+                        <p>{{user.repositoryDescriptions[i]}}</p>
+                        <p>Created: {{user.repositoryCreated[i]}} | License: {{user.repositoryForks[i]}} | Forks: {{user.repositoryLicenses[i]}}</p>
+                    </div>
                 </div>
             </div>
         </div>
