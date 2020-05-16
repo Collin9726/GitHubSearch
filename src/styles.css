@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html, body{
+    scroll-behavior: smooth;
+    color: black;
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+    height: 0%;
+    background-image: url('https://studiomao.com/wp-content/uploads/2015/06/white-background-faded.png');    
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
