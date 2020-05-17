@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Users } from 'src/app/models/User/users';
 import { HttpClient } from '@angular/common/http';
-import {environment } from './../../../environments/environment';
+import { environment } from './../../../environments/environment';
 import { UserRepos } from '../../models/UserRepos/user-repos';
 
 @Injectable({
@@ -33,7 +33,7 @@ export class SearchUserService {
     }
 
     let promise= new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(`${environment.testBase}${username}`).toPromise().then(response=>{
+      this.http.get<ApiResponse>(`${environment.userBase}${username}`).toPromise().then(response=>{
         this.user.profPic=response.avatar_url;
         this.user.username=response.login;
         this.user.profileLink=response.html_url;

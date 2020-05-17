@@ -1,7 +1,8 @@
 export class Repo {
     repoName:string;
     owner:string;
-    link:string;
+    ownerLink:string;
+    repoLink:string;
     description:string;
     createdAt:string;
     lastUpdated:string;
@@ -12,7 +13,8 @@ export class Repo {
     constructor (){
         this.repoName='';
         this.owner='';
-        this.link='';
+        this.ownerLink='';
+        this.repoLink='';
         this.description='';
         this.createdAt='';
         this.lastUpdated='';
