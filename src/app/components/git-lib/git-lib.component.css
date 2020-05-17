@@ -3,7 +3,8 @@
 }
 
 .jumbotron{    
-    background-color: rgb(41, 41, 49);
+    /*background-color: rgb(41, 41, 49);*/
+    background-color: rgb(0, 0, 0);
     color: lightcyan;
     padding: 2%; 
     margin: 0%; 
@@ -19,4 +20,8 @@
     font-size: xx-large;
     font-weight: lighter;
     color: orange;
+}
+
+.active button{
+    color: lightcyan;
 }

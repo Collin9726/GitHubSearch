@@ -18,7 +18,7 @@ export class RepoHighlightDirective {
 
   private repoDeco(input:boolean){
     if(input){
-      this.elem.nativeElement.style.backgroundColor='yellow';
+      this.elem.nativeElement.style.backgroundColor='rgba(1, 1, 19, 0.7)';
     }
     else{
       this.elem.nativeElement.style.backgroundColor='black';

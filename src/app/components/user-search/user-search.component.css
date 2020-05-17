@@ -1,6 +1,6 @@
 .jumbotron{    
     margin-bottom:2%;    
-    background-color: rgb(41, 41, 49);
+    background-color: rgb(0, 0, 0, 0.9);
     color: lightcyan;
     padding: 2%;    
 }
@@ -35,10 +35,27 @@ img{
     max-width: 60%;    
     object-fit: cover;
     border-radius: 1em;
-    box-shadow: 5px 10px rgb(136, 136, 136, 0.4)
+    box-shadow: 3px 5px rgb(255, 165, 0, 0.3)
 }
 
 .text-style{
-    font-size: smaller;
+    font-size: small;
 }
 
+.card{
+    background-color: black;
+    height: 100%;
+}
+
+.jumbotron a{
+    text-decoration: none;
+    color: rgb(255, 165, 0, 0.7);
+}
+
+.jumbotron a:hover{
+    color: blue;
+}
+
+.text-normal{
+    font-size: 1.1em;
+}

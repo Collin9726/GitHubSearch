@@ -9,7 +9,7 @@
                                 <input class="form-control" type="text" name="searchUser" id="searchUser" [(ngModel)]="searchedUser.username" #searchUser='ngModel' placeholder="Search user" required>
                             </div>
                             <div class="col-1">
-                                <button class="btn btn-info" type="submit">Search</button>
+                                <button class="btn btn-primary" type="submit">Search</button>
                             </div>
                         </div>
                     </form>
@@ -26,7 +26,7 @@
                         <img src="{{user.profPic}}" alt="avatar">
                     </div>                                        
                 </div>
-                <div class="col-12 col-md-6 border-r">
+                <div class="col-12 col-md-6 text-normal">
                     <h4>Profile</h4>
                     <hr>
                     <h6 *ngIf='user.isName'>Name</h6>
@@ -46,14 +46,17 @@
                     <h3>Repositories</h3>                    
                 </div>
                 <div *ngFor='let item of userRepos.repositoryNames;let i = index' class="col-12 col-md-4 mb-4">
-                    <h6><a href="{{userRepos.repositoryLinks[i]}}">{{item}}</a></h6>
-                    <hr>
-                    <p>{{userRepos.repositoryDescriptions[i]}}</p>
-                    <div>
-                        Created: {{userRepos.repositoryCreated[i] | datePipe}}<br>
-                        License: {{userRepos.repositoryLicenses[i]}}<br>
-                        Forks: {{userRepos.repositoryForks[i]}}
-                    </div>                    
+                    <div class="card" appRepoHighlight>
+                        <div class="card-body text-style">
+                            <a href="{{userRepos.repositoryLinks[i]}}"><h5 class="card-title">{{item}}</h5></a>                            
+                            <p class="card-text">{{userRepos.repositoryDescriptions[i]}}</p>
+                            <div>
+                                Created: {{userRepos.repositoryCreated[i] | datePipe}}<br>
+                                License: {{userRepos.repositoryLicenses[i]}}<br>
+                                Forks: {{userRepos.repositoryForks[i]}}
+                            </div>
+                        </div>
+                    </div>                                        
                 </div>                    
             </div>
         </div>
