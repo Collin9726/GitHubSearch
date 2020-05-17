@@ -22,30 +22,36 @@ export class SearchRepoService {
 
     interface ApiResponse{
       total_count:number;
-      items:any[];      
+      items:any;      
     }
 
     let promise= new Promise((resolve,reject)=>{
       this.http.get<ApiResponse>(`${environment.repoBase}${input}`).toPromise().then(response=>{
         this.totalRepos.totalRepos=response.total_count;
-        let loopLength=response.items.length;
-        for(let i=0; i<loopLength;i++){
+        //let loopLength=response.items.length;
+        for(let item of response.items){
           this.repo=new Repo();
-          this.repo.repoName=response.items[i].name;
-          this.repo.owner=response.items[i].owner.login;
-          this.repo.ownerLink=response.items[i].owner.html_url;
-          this.repo.repoLink=response.items[i].html_url;
-          this.repo.description=response.items[i].description;
-          this.repo.forks=response.items[i].forks;
-          this.repo.language=response.items[i].language;
-          this.repo.createdAt=response.items[i].created_at;
-          this.repo.lastUpdated=response.items[i].updated_at;
-          this.repo.license=response.items[i].license.name;
+          this.repo.repoName=item.name;
+          this.repo.owner=item.owner.login;
+          this.repo.ownerLink=item.owner.html_url;
+          this.repo.repoLink=item.html_url;
+          this.repo.description=item.description;
+          this.repo.forks=item.forks;
+          this.repo.language=item.language;
+          this.repo.createdAt=item.created_at;
+          this.repo.lastUpdated=item.updated_at;
+          if (item.license!==null){
+            this.repo.license=item.license.name;
+          }
+          else{
+            this.repo.license='None';
+          }
 
           this.repos.push(this.repo);
         }                    
         
         resolve();
+        console.log(this.repos)
       },
       error=>{
         console.log("Error fetching user");       

@@ -30,3 +30,8 @@ hr{
     font-size: smaller;
 }
 
+.card{
+    background-color: black;
+    height: 100%;
+}
+
