@@ -34,10 +34,17 @@ export class SearchUserService {
 
     let promise= new Promise((resolve,reject)=>{
       this.http.get<ApiResponse>(`${environment.userBase}${username}`).toPromise().then(response=>{
+        this.user.isName=true;
         this.user.profPic=response.avatar_url;
         this.user.username=response.login;
         this.user.profileLink=response.html_url;
-        this.user.name=response.name;
+        if (response.name!==null){
+          this.user.name=response.name;
+        } 
+        else{
+          this.user.isName=false;
+          this.user.name='';
+        }       
         this.user.followers=response.followers;
         this.user.following=response.following;
         this.user.publicRepos=response.public_repos;
@@ -90,7 +97,13 @@ export class SearchUserService {
           this.userRepos.repositoryDescriptions.push(response[i]['description']);
           this.userRepos.repositoryForks.push(response[i]['forks']);
           this.userRepos.repositoryCreated.push(response[i]['created_at']);
-          this.userRepos.repositoryLicenses.push(response[i]['license']['name']);
+          if(response[i]['license']===null)
+          {
+            this.userRepos.repositoryLicenses.push("None");
+          }
+          else{
+            this.userRepos.repositoryLicenses.push(response[i]['license']['name']);
+          }          
     
           resolve();
         },

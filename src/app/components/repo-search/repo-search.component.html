@@ -27,7 +27,7 @@
             </div>
             <div class="row mb-4">
                 <div *ngFor='let repo of repos' class="col-12 col-md-4 mb-4">
-                    <div class="card">
+                    <div class="card" appRepoHighlight>
                         <div class="card-body text-style">
                             <a href="{{repo.repoLink}}"><h5 class="card-title">{{repo.repoName}}</h5></a>
                             <h6 class="card-subtitle mb-2 text-muted">{{repo.language}}</h6>

@@ -29,7 +29,7 @@
                 <div class="col-12 col-md-6 border-r">
                     <h4>Profile</h4>
                     <hr>
-                    <h6>Name</h6>
+                    <h6 *ngIf='user.isName'>Name</h6>
                     <p class="orange">{{user.name}}</p>
                     <h6>Public Repos</h6>
                     <p class="orange">{{user.publicRepos}}</p>

@@ -9,6 +9,7 @@ export class Users {
     joined:string;
     publicRepos:number;
     reposUrl:string;
+    isName:boolean;
     
 
     constructor(){
@@ -21,6 +22,7 @@ export class Users {
         this.followers=0;
         this.joined='';
         this.publicRepos=0;
-        this.reposUrl='';        
+        this.reposUrl=''; 
+        this.isName=true;       
     }
 }
