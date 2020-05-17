@@ -1,0 +1,32 @@
+.jumbotron{    
+    margin-bottom:2%;    
+    background-color: rgb(41, 41, 49);
+    color: lightcyan;
+    padding: 2%;    
+}
+
+input{
+    background-color: lightcyan;
+}
+
+.border-r{
+    border-right: 1px solid gray;
+}
+
+.border-b{
+    border-bottom: 1px solid gray;
+    margin-bottom: 1em;
+}
+
+hr{    
+    border-color: lightgray;
+}
+
+.orange{
+    color: orange;
+}
+
+.text-style{
+    font-size: smaller;
+}
+
