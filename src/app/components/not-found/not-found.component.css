@@ -1,0 +1,13 @@
+.jumbotron{    
+    margin-bottom:2%;    
+    background-color: rgb(0, 0, 0, 0.9);
+    color: lightcyan;
+    padding: 2%; 
+    background-image: url('https://media0.giphy.com/media/8L0Pky6C83SzkzU55a/200w.gif?cid=2372fa11eefbff28a7e66ab8094c106feb99785a6488ae5d&rid=200w.gif'); 
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.min-height{
+    min-height: 400px;
+}
