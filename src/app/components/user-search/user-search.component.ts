@@ -18,6 +18,7 @@ export class UserSearchComponent implements OnInit {
   submitUsername(){
     this.searchedUser1=this.searchedUser;
     this.userService.searchUser(this.searchedUser1.username);
+    this.userService.searchRepos();
     this.user=this.userService.user;
     //this.totalCount=this.userService.totalCount;
     this.searchedUser=new UsernameInput();

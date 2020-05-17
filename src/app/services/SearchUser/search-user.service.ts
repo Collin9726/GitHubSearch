@@ -14,6 +14,8 @@ export class SearchUserService {
 
   searchUser(username:string){
 
+    this.user=new Users ();
+
     interface ApiResponse{
       login:string;
       html_url:string;
@@ -41,7 +43,7 @@ export class SearchUserService {
         resolve();
       },
       error=>{
-        console.log("Error ApiResponse");       
+        console.log("Error fetching user");       
         reject(error)
       })            
     })          
@@ -49,7 +51,32 @@ export class SearchUserService {
     
   }
 
+  searchRepos(){
+    let promise=new Promise ((resolve,reject)=>{
+      this.http.get(`${this.user.reposUrl}`).toPromise().then(response=>{
+        //let arr:any[]=response[];
+        let numOfRepos=response["length"];
+        for (let i=0; i<5; i++){
+          this.user.repositoryNames.push(response[i].name);
+          this.user.repositoryLinks.push(response[i].html_url);
+          this.user.repositoryDescriptions.push(response[i].description);
+          this.user.repositoryForks.push(response[i].forks);
+          this.user.repositoryCreated.push(response[i].created_at);
+          this.user.repositoryLicenses.push(response[i].license.name);
+        }
+  
+        resolve();
+      },
+      error=>{
+        console.log("Error fetching repos");       
+        reject(error);                  
+      })
+    })
+    return promise; 
+  }
+
   constructor(private http: HttpClient) { 
     this.user=new Users();
   }
 }
+
