@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Users } from 'src/app/models/User/users';
 import { HttpClient } from '@angular/common/http';
 import {environment } from './../../../environments/environment';
+import { UserRepos } from '../../models/UserRepos/user-repos';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,15 @@ import {environment } from './../../../environments/environment';
 export class SearchUserService {
   //users: Users[];
   user: Users;
+  userRepos: UserRepos;
+  reposURL:string='';
+  repoNum:number=0;
   //numOfRepos:number=5;
   //totalCount:number;
 
   searchUser(username:string){
 
-    this.user=new Users ();
+    //this.user=new Users ();
 
     interface ApiResponse{
       login:string;
@@ -38,7 +42,10 @@ export class SearchUserService {
         this.user.following=response.following;
         this.user.publicRepos=response.public_repos;
         this.user.joined=response.created_at;
-        this.user.reposUrl=response.repos_url;                    
+        this.user.reposUrl=response.repos_url;
+        this.reposURL=response.repos_url;
+        this.repoNum=response.public_repos;
+        this.searchRepos();                    
         
         resolve();
       },
@@ -52,31 +59,53 @@ export class SearchUserService {
   }
 
   searchRepos(){
-    let promise=new Promise ((resolve,reject)=>{
-      this.http.get(`${this.user.reposUrl}`).toPromise().then(response=>{
-        //let arr:any[]=response[];
-        let numOfRepos=response["length"];
-        for (let i=0; i<5; i++){
-          this.user.repositoryNames.push(response[i].name);
-          this.user.repositoryLinks.push(response[i].html_url);
-          this.user.repositoryDescriptions.push(response[i].description);
-          this.user.repositoryForks.push(response[i].forks);
-          this.user.repositoryCreated.push(response[i].created_at);
-          this.user.repositoryLicenses.push(response[i].license.name);
-        }
-  
-        resolve();
-      },
-      error=>{
-        console.log("Error fetching repos");       
-        reject(error);                  
+
+    let arrLength=this.userRepos.repositoryNames.length;
+
+    interface ApiRepos{
+      name:string;
+      html_url:string;
+      description:string;
+      forks:number;
+      created_at:string;
+      license:any;
+    }
+
+    for(let i=0; i<arrLength; i++){
+      this.userRepos.repositoryNames.pop();
+      this.userRepos.repositoryLinks.pop();
+      this.userRepos.repositoryDescriptions.pop();
+      this.userRepos.repositoryForks.pop();
+      this.userRepos.repositoryCreated.pop();
+      this.userRepos.repositoryLicenses.pop();
+    }
+
+    for(let i=0;i<this.repoNum;i++){
+      let promise=new Promise ((resolve,reject)=>{
+        this.http.get<ApiRepos>(`${this.reposURL}`).toPromise().then(response=>{
+          //let arr:any[]=response[];
+          //let numOfRepos=response["length"];
+          this.userRepos.repositoryNames.push(response[i]['name']);
+          this.userRepos.repositoryLinks.push(response[i]['html_url']);
+          this.userRepos.repositoryDescriptions.push(response[i]['description']);
+          this.userRepos.repositoryForks.push(response[i]['forks']);
+          this.userRepos.repositoryCreated.push(response[i]['created_at']);
+          this.userRepos.repositoryLicenses.push(response[i]['license']['name']);
+    
+          resolve();
+        },
+        error=>{
+          console.log("Error fetching repos");       
+          reject(error);                  
+        })
       })
-    })
-    return promise; 
+      //return promise;
+    } 
   }
 
   constructor(private http: HttpClient) { 
     this.user=new Users();
+    this.userRepos=new UserRepos();
   }
 }
 

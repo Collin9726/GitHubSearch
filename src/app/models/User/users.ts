@@ -9,12 +9,7 @@ export class Users {
     joined:string;
     publicRepos:number;
     reposUrl:string;
-    repositoryNames:string[];
-    repositoryLinks:string[];
-    repositoryDescriptions:string[];
-    repositoryCreated:string[];
-    repositoryForks:number[];
-    repositoryLicenses:string[];
+    
 
     constructor(){
         this.totalCount=0;
@@ -26,12 +21,6 @@ export class Users {
         this.followers=0;
         this.joined='';
         this.publicRepos=0;
-        this.reposUrl='';
-        this.repositoryNames=[];
-        this.repositoryLinks=[];
-        this.repositoryDescriptions=[];
-        this.repositoryCreated=[];
-        this.repositoryForks=[];
-        this.repositoryLicenses=[];
+        this.reposUrl='';        
     }
 }
