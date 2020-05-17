@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <h5>Repos found: {{totalCount.totalRepos}}</h5>
+                    <h5>Repos: {{totalCount.totalRepos}}</h5>
                 </div>
             </div>
             <div class="row">
@@ -34,8 +34,8 @@
                             <p class="card-text">{{repo.description}}</p>
                             <div>
                                 Owner: <a href="{{repo.ownerLink}}">{{repo.owner}}</a><br>
-                                Created: {{repo.createdAt}}<br>
-                                Last update: {{repo.lastUpdated}}<br>
+                                Created: {{repo.createdAt | datePipe}}<br>
+                                Last update: {{repo.lastUpdated | datePipe}}<br>
                                 License: {{repo.license}}<br>
                                 Forks: {{repo.forks}}
                             </div>

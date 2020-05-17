@@ -31,15 +31,14 @@
                     <hr>
                     <h6>Name</h6>
                     <p class="orange">{{user.name}}</p>
+                    <h6>Public Repos</h6>
+                    <p class="orange">{{user.publicRepos}}</p>
                     <h6>Followers</h6>
                     <p class="orange">{{user.followers}}</p>
                     <h6>Following</h6>
                     <p class="orange">{{user.following}}</p>
                     <h6>Joined GitHub</h6>
-                    <p class="orange">{{user.joined}}</p>
-                    <h6>Public Repos</h6>
-                    <p class="orange">{{user.publicRepos}}</p>
-                    <p>{{user.reposUrl}}</p>
+                    <p class="orange">{{user.joined | datePipe}}</p>                                        
                 </div>                
             </div>
             <div class="row text-style">
@@ -51,7 +50,7 @@
                     <hr>
                     <p>{{userRepos.repositoryDescriptions[i]}}</p>
                     <div>
-                        Created: {{userRepos.repositoryCreated[i]}}<br>
+                        Created: {{userRepos.repositoryCreated[i] | datePipe}}<br>
                         License: {{userRepos.repositoryLicenses[i]}}<br>
                         Forks: {{userRepos.repositoryForks[i]}}
                     </div>                    

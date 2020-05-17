@@ -8,13 +8,15 @@ import { UserSearchComponent } from './components/user-search/user-search.compon
 import { RepoSearchComponent } from './components/repo-search/repo-search.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipePipe } from './pipes/date-pipe/date-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     GitLibComponent,
     UserSearchComponent,
-    RepoSearchComponent
+    RepoSearchComponent,
+    DatePipePipe
   ],
   imports: [
     BrowserModule,
