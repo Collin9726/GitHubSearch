@@ -15,48 +15,34 @@
                     </form>
                 </div>
             </div>
-            <div class="row mb-4 text-style">
-                <div class="col-12 col-md-6 border-r">
-                    <h4>User</h4>
-                    <hr>
-                    <ul>
-                        <a href="{{user.profileLink}}"><li class="username">{{user.username}}</li></a>
-                    </ul>
-                    <div class="picture text-center">
-                        <img src="{{user.profPic}}" alt="avatar">
-                    </div>                                        
+            <div class="row">
+                <div class="col-12">
+                    <h5>Search results: {{totalCount.totalRepos}}</h5>
                 </div>
-                <div class="col-12 col-md-6 border-r">
-                    <h4>Profile</h4>
-                    <hr>
-                    <h6>Name</h6>
-                    <p class="orange">{{user.name}}</p>
-                    <h6>Followers</h6>
-                    <p class="orange">{{user.followers}}</p>
-                    <h6>Following</h6>
-                    <p class="orange">{{user.following}}</p>
-                    <h6>Joined GitHub</h6>
-                    <p class="orange">{{user.joined}}</p>
-                    <h6>Public Repos</h6>
-                    <p class="orange">{{user.publicRepos}}</p>
-                    <p>{{user.reposUrl}}</p>
-                </div>                
             </div>
-            <div class="row text-style">
-                <div class="col-12 mb-4 text-center">
-                    <h3>Repositories</h3>                    
+            <div class="row">
+                <div class="col-12 text-center mb-4">
+                    <h4>Repositories</h4>
                 </div>
-                <div *ngFor='let item of userRepos.repositoryNames;let i = index' class="col-12 col-md-4 mb-4">
-                    <h6><a href="{{userRepos.repositoryLinks[i]}}">{{item}}</a></h6>
-                    <hr>
-                    <p>{{userRepos.repositoryDescriptions[i]}}</p>
-                    <div>
-                        Created: {{userRepos.repositoryCreated[i]}}<br>
-                        License: {{userRepos.repositoryLicenses[i]}}<br>
-                        Forks: {{userRepos.repositoryForks[i]}}
-                    </div>                    
-                </div>                    
             </div>
+            <div class="row mb-4">
+                <div *ngFor='let repo of repos' class="col-12 col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{{repo.repoLink}}"><h5 class="card-title">{{repo.repoName}}</h5></a>
+                            <h6 class="card-subtitle mb-2 text-muted">{{repo.language}}</h6>
+                            <p class="card-text">{{repo.description}}</p>
+                            <div>
+                                Owner: <a href="{{repo.ownerLink}}">{{repo.owner}}</a><br>
+                                Created: {{repo.createdAt}}<br>
+                                Last update: {{repo.lastUpdated}}<br>
+                                License: {{repo.license}}<br>
+                                Forks: {{repo.forks}}
+                            </div>
+                        </div>
+                    </div>
+                </div>                                                
+            </div>            
         </div>
     </div>
 </div>
