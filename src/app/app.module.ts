@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { GitLibComponent } from './components/git-lib/git-lib.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { RepoSearchComponent } from './components/repo-search/repo-search.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { RepoSearchComponent } from './components/repo-search/repo-search.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

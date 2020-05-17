@@ -12,20 +12,20 @@ export class UserSearchComponent implements OnInit {
 
   searchedUser=new UsernameInput();
   searchedUser1=new UsernameInput();
-  users:Users[];
-  totalCount:number;
+  user:Users=new Users();
+  //totalCount:number;
 
   submitUsername(){
     this.searchedUser1=this.searchedUser;
     this.userService.searchUser(this.searchedUser1.username);
-    this.users=this.userService.users;
-    this.totalCount=this.userService.totalCount;
+    this.user=this.userService.user;
+    //this.totalCount=this.userService.totalCount;
     this.searchedUser=new UsernameInput();
   }
 
   constructor(private userService: SearchUserService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
 }

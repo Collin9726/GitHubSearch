@@ -15,4 +15,23 @@ export class Users {
     repositoryCreated:string[];
     repositoryForks:number[];
     repositoryLicenses:string[];
+
+    constructor(){
+        this.totalCount=0;
+        this.username='';
+        this.profileLink='';
+        this.name='';
+        this.profPic='';
+        this.following=0;
+        this.followers=0;
+        this.joined='';
+        this.publicRepos=0;
+        this.reposUrl='';
+        this.repositoryNames=[];
+        this.repositoryLinks=[];
+        this.repositoryDescriptions=[];
+        this.repositoryCreated=[];
+        this.repositoryForks=[];
+        this.repositoryLicenses=[];
+    }
 }
