@@ -27,7 +27,7 @@ export class SearchUserService {
     }
 
     let promise= new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(`${environment.userBase}${username}`).toPromise().then(response=>{
+      this.http.get<ApiResponse>(`${environment.testBase}${username}`).toPromise().then(response=>{
         this.user.profPic=response.avatar_url;
         this.user.username=response.login;
         this.user.profileLink=response.html_url;
