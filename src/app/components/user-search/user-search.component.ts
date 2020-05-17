@@ -32,9 +32,7 @@ export class UserSearchComponent implements OnInit {
   constructor(private userService: SearchUserService) { }
 
   ngOnInit(){
-    this.userService.searchUser("Collin9726");
-    this.user=this.userService.user;    
-    this.userRepos=this.userService.userRepos;
+    
   }
 
 }

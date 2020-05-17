@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipePipe } from './pipes/date-pipe/date-pipe.pipe';
 import { RepoHighlightDirective } from './directives/RepoHighlight/repo-highlight.directive';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { RepoHighlightDirective } from './directives/RepoHighlight/repo-highligh
     UserSearchComponent,
     RepoSearchComponent,
     DatePipePipe,
-    RepoHighlightDirective
+    RepoHighlightDirective,
+    NotFoundComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
