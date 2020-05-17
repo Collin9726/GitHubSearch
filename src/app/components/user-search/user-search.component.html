@@ -1,63 +1,69 @@
 <div class="row">
     <div class="col-12">
-        <div class="jumbotron min-height">
-            <div class="row border-b">
-                <div class="col-12 col-md-5">
-                    <form (ngSubmit)='submitUsername()' #usernameForm='ngForm'>
-                        <div class="row">
-                            <div class="col-11 form-group">
-                                <input class="form-control" type="text" name="searchUser" id="searchUser" [(ngModel)]="searchedUser.username" #searchUser='ngModel' placeholder="Search user" required>
+        <div class="jumbotron">
+            <div class="min-height">
+                <div class="row">
+                    <div class="col-10 col-md-5">
+                        <form (ngSubmit)='submitUsername()' #usernameForm='ngForm'>
+                            <div class="row">
+                                <div class="col-12 input-group mb-3">
+                                    <input class="form-control" type="text" name="searchUser" aria-label="" aria-describedby="basic-addon2" id="searchUser" [(ngModel)]="searchedUser.username" #searchUser='ngModel' placeholder="Search user" required>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit"><fa-icon [icon]="faSearch"></fa-icon></button>
+                                    </div>
+                                </div>                                
                             </div>
-                            <div class="col-1">
-                                <button class="btn btn-primary" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div class="col-md-5"></div>
+                    <div class="col-2 text-right">
+                        <a routerLink="/home" class="align-text-bottom">Developer Profile</a>
+                    </div>
+                </div>
+                <div *ngIf='user.profileLink!==""' class="row mb-4 text-style">
+                    <div class="col-12 col-md-6 border-r">
+                        <h4>User</h4>
+                        <hr>
+                        <ul>
+                            <a href="{{user.profileLink}}"><li class="username">{{user.username}}</li></a>
+                        </ul>
+                        <div class="picture text-center">
+                            <img src="{{user.profPic}}" alt="avatar">
+                        </div>                                        
+                    </div>
+                    <div class="col-12 col-md-6 text-normal">
+                        <h4>Profile</h4>
+                        <hr>
+                        <h6 *ngIf='user.isName'>Name</h6>
+                        <p class="orange">{{user.name}}</p>
+                        <h6>Public Repos</h6>
+                        <p class="orange">{{user.publicRepos}}</p>
+                        <h6>Followers</h6>
+                        <p class="orange">{{user.followers}}</p>
+                        <h6>Following</h6>
+                        <p class="orange">{{user.following}}</p>
+                        <h6>Joined GitHub</h6>
+                        <p class="orange">{{user.joined | datePipe}}</p>                                        
+                    </div>                
+                </div>
+                <div *ngIf='user.profileLink!==""' class="row text-style">
+                    <div class="col-12 mb-4 text-center">
+                        <h3>Repositories</h3>                    
+                    </div>
+                    <div *ngFor='let item of userRepos.repositoryNames;let i = index' class="col-12 col-md-4 mb-4">
+                        <div class="card" appRepoHighlight>
+                            <div class="card-body text-style">
+                                <a href="{{userRepos.repositoryLinks[i]}}"><h5 class="card-title">{{item}}</h5></a>                            
+                                <p class="card-text">{{userRepos.repositoryDescriptions[i]}}</p>
+                                <div>
+                                    Created: {{userRepos.repositoryCreated[i] | datePipe}}<br>
+                                    License: {{userRepos.repositoryLicenses[i]}}<br>
+                                    Forks: {{userRepos.repositoryForks[i]}}
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </div>                                        
+                    </div>                    
                 </div>
-            </div>
-            <div class="row mb-4 text-style">
-                <div class="col-12 col-md-6 border-r">
-                    <h4>User</h4>
-                    <hr>
-                    <ul>
-                        <a href="{{user.profileLink}}"><li class="username">{{user.username}}</li></a>
-                    </ul>
-                    <div class="picture text-center">
-                        <img src="{{user.profPic}}" alt="avatar">
-                    </div>                                        
-                </div>
-                <div class="col-12 col-md-6 text-normal">
-                    <h4>Profile</h4>
-                    <hr>
-                    <h6 *ngIf='user.isName'>Name</h6>
-                    <p class="orange">{{user.name}}</p>
-                    <h6>Public Repos</h6>
-                    <p class="orange">{{user.publicRepos}}</p>
-                    <h6>Followers</h6>
-                    <p class="orange">{{user.followers}}</p>
-                    <h6>Following</h6>
-                    <p class="orange">{{user.following}}</p>
-                    <h6>Joined GitHub</h6>
-                    <p class="orange">{{user.joined | datePipe}}</p>                                        
-                </div>                
-            </div>
-            <div class="row text-style">
-                <div class="col-12 mb-4 text-center">
-                    <h3>Repositories</h3>                    
-                </div>
-                <div *ngFor='let item of userRepos.repositoryNames;let i = index' class="col-12 col-md-4 mb-4">
-                    <div class="card" appRepoHighlight>
-                        <div class="card-body text-style">
-                            <a href="{{userRepos.repositoryLinks[i]}}"><h5 class="card-title">{{item}}</h5></a>                            
-                            <p class="card-text">{{userRepos.repositoryDescriptions[i]}}</p>
-                            <div>
-                                Created: {{userRepos.repositoryCreated[i] | datePipe}}<br>
-                                License: {{userRepos.repositoryLicenses[i]}}<br>
-                                Forks: {{userRepos.repositoryForks[i]}}
-                            </div>
-                        </div>
-                    </div>                                        
-                </div>                    
             </div>
         </div>
     </div>

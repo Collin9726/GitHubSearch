@@ -1,26 +1,30 @@
 <div class="row">
     <div class="col-12">
         <div class="jumbotron">
-            <div class="row border-b">
+            <div class="row">
                 <div class="col-12 col-md-5">
                     <form (ngSubmit)='submitRepoName()' #repoNameForm='ngForm'>
                         <div class="row">
-                            <div class="col-11 form-group">
-                                <input class="form-control" type="text" name="searchRepo" id="searchRepo" [(ngModel)]="searchedRepo.repoName" #searchRepo='ngModel' placeholder="Search repository" required>
-                            </div>
-                            <div class="col-1">
-                                <button class="btn btn-primary" type="submit">Search</button>
-                            </div>
+                            <div class="col-12 input-group mb-3">
+                                <input class="form-control" type="text" name="searchRepo" aria-label="" aria-describedby="basic-addon2" id="searchRepo" [(ngModel)]="searchedRepo.repoName" #searchRepo='ngModel' placeholder="Search repository" required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit"><fa-icon [icon]="faSearch"></fa-icon></button>
+                                </div>
+                            </div>                            
                         </div>
                     </form>
                 </div>
+                <div class="col-md-5"></div>
+                <div class="col-2 text-right">
+                    <a routerLink="/home" class="align-text-bottom">Developer Profile</a>
+                </div>
             </div>
-            <div class="row">
+            <div *ngIf='repos.length!==0' class="row">
                 <div class="col-12">
                     <h5>Repos: {{totalCount.totalRepos}}</h5>
                 </div>
             </div>
-            <div class="row">
+            <div *ngIf='repos.length!==0' class="row">
                 <div class="col-12 text-center mb-4">
                     <h4>Repositories</h4>
                 </div>

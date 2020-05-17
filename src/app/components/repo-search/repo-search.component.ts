@@ -3,6 +3,7 @@ import { RepoNameInput } from 'src/app/models/RepoNameInput/repo-name-input';
 import { Repo } from 'src/app/models/Repo/repo';
 import { ReposTotalCount } from '../../models/ReposTotalCount/repos-total-count';
 import { SearchRepoService } from 'src/app/services/SearchRepo/search-repo.service';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-repo-search',
@@ -10,6 +11,8 @@ import { SearchRepoService } from 'src/app/services/SearchRepo/search-repo.servi
   styleUrls: ['./repo-search.component.css']
 })
 export class RepoSearchComponent implements OnInit {
+
+  faSearch=faSearch;
 
   searchedRepo=new RepoNameInput();
   searchedRepo1=new RepoNameInput();

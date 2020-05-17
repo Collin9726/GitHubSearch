@@ -12,6 +12,7 @@ import { DatePipePipe } from './pipes/date-pipe/date-pipe.pipe';
 import { RepoHighlightDirective } from './directives/RepoHighlight/repo-highlight.directive';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

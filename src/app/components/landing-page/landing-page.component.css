@@ -49,11 +49,11 @@ img{
 
 .jumbotron a{
     text-decoration: none;
-    color: rgb(255, 165, 0, 0.7);
+    color: rgb(255, 165, 0, 0.8);
 }
 
 .jumbotron a:hover{
-    color: blue;
+    color: cyan;
 }
 
 .text-normal{
