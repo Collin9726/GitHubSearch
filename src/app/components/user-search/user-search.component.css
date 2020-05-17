@@ -30,3 +30,10 @@ hr{
 .orange{
     color: orange;
 }
+
+img{
+    max-width: 60%;    
+    object-fit: cover;
+    border-radius: 1em;
+    box-shadow: 5px 10px rgb(136, 136, 136, 0.4)
+}
