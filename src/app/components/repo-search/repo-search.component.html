@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="row mb-4 min-height">
-                <div *ngFor='let repo of repos' class="col-12 col-md-4 mb-4">
+                <div *ngFor='let repo of repos' class="col-12 col-md-4 mb-3">
                     <div class="card" appRepoHighlight>
                         <div class="card-body text-style">
                             <a href="{{repo.repoLink}}"><h5 class="card-title">{{repo.repoName}}</h5></a>
@@ -45,6 +45,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div *ngIf='repos.length!==0' class="col-12 text-style text-center">
+                    <p>Click repo to highlight</p>
                 </div>                                                
             </div>            
         </div>
