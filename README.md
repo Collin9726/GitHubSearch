@@ -1,3 +1,5 @@
+[![codebeat badge](https://codebeat.co/badges/3c9a2ef8-f6cb-46d2-b56a-86fd559a773b)](https://codebeat.co/projects/github-com-collin9726-githubsearch-master)
+
 # GitHub Library
 #### An Angular app that allows one to search for GitHub users and repositories, 18/05/2020
 #### By [Collin Owino](https://github.com/Collin9726)
