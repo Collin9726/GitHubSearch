@@ -18,20 +18,13 @@ export class RepoSearchComponent implements OnInit {
   searchedRepo1=new RepoNameInput();
   repo:Repo=new Repo();
   repos:Repo[]=[];
-  totalCount: ReposTotalCount=new ReposTotalCount();
-  //userRepos: UserRepos=new UserRepos();
-  //totalCount:number;
+  totalCount: ReposTotalCount=new ReposTotalCount();  
 
   submitRepoName(){
     this.searchedRepo1=this.searchedRepo;
     this.repoService.searchRepo(this.searchedRepo1.repoName);
     this.repos=this.repoService.repos;
-    this.totalCount=this.repoService.totalRepos;
-    //let repoNum=this.user.publicRepos;
-    //let reposURL=this.user.reposUrl;
-    //this.repoService.searchRepos();
-    //this.userRepos=this.userService.userRepos;    
-    //this.totalCount=this.userService.totalCount;
+    this.totalCount=this.repoService.totalRepos;    
     this.searchedRepo=new RepoNameInput();
   }
 

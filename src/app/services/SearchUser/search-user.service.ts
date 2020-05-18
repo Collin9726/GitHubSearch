@@ -7,19 +7,14 @@ import { UserRepos } from '../../models/UserRepos/user-repos';
 @Injectable({
   providedIn: 'root'
 })
-export class SearchUserService {
-  //users: Users[];
+export class SearchUserService {  
   user: Users;
   userRepos: UserRepos;
   reposURL:string='';
-  repoNum:number=0;
-  //numOfRepos:number=5;
-  //totalCount:number;
+  repoNum:number=0;  
 
   searchUser(username:string){
-
-    //this.user=new Users ();
-
+    
     interface ApiResponse{
       login:string;
       html_url:string;
@@ -90,8 +85,7 @@ export class SearchUserService {
     for(let i=0;i<this.repoNum;i++){
       let promise=new Promise ((resolve,reject)=>{
         this.http.get<ApiRepos>(`${this.reposURL}`).toPromise().then(response=>{
-          //let arr:any[]=response[];
-          //let numOfRepos=response["length"];
+          
           this.userRepos.repositoryNames.push(response[i]['name']);
           this.userRepos.repositoryLinks.push(response[i]['html_url']);
           this.userRepos.repositoryDescriptions.push(response[i]['description']);
@@ -112,7 +106,7 @@ export class SearchUserService {
           reject(error);                  
         })
       })
-      //return promise;
+      
     } 
   }
 
